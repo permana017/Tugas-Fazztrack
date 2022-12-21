@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="ASUS"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2022-12-12 07:48:35 PM"/>
+        <attribute name="created" value="QVNVUztMQVBUT1AtNTVBOEk0Mjg7MjAyMi0xMi0xMjswNzoxNToxMCBQTTsyNTUz"/>
+        <attribute name="edited" value="QVNVUztMQVBUT1AtNTVBOEk0Mjg7MjAyMi0xMi0xMjswNzo0ODozNSBQTTsxOzI2NzQ="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="text" type="String" array="False" size=""/>
+            <declare name="index" type="Integer" array="False" size=""/>
+            <input variable="text"/>
+            <assign variable="index" expression="0"/>
+            <while expression="index &lt; len(text)">
+                <if expression="char(text, index) = &quot;a&quot;">
+                    <then>
+                        <output expression="&quot;o&quot;" newline="True"/>
+                    </then>
+                    <else>
+                        <if expression="char(text, index) = &quot;A&quot;">
+                            <then>
+                                <output expression="&quot;O&quot;" newline="True"/>
+                            </then>
+                            <else>
+                                <output expression="char(text, index)" newline="True"/>
+                            </else>
+                        </if>
+                    </else>
+                </if>
+                <assign variable="index" expression="index + 1"/>
+            </while>
+        </body>
+    </function>
+</flowgorithm>

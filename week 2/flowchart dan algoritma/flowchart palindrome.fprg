@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="ASUS"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2022-12-12 08:38:17 PM"/>
+        <attribute name="created" value="QVNVUztMQVBUT1AtNTVBOEk0Mjg7MjAyMi0xMi0xMjswNzo1MDozMiBQTTsyNTU2"/>
+        <attribute name="edited" value="QVNVUztMQVBUT1AtNTVBOEk0Mjg7MjAyMi0xMi0xMjswODozODoxNyBQTTsxOzI2NzQ="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="index" type="Integer" array="False" size=""/>
+            <declare name="palindrome" type="Boolean" array="False" size=""/>
+            <declare name="text" type="String" array="False" size=""/>
+            <input variable="text"/>
+            <assign variable="palindrome" expression="true"/>
+            <assign variable="index" expression="0"/>
+            <while expression="index &lt;= len(text)/2-1 and palindrome = true">
+                <if expression="char(text, index) &lt;&gt; char(text, len(text)-index-1)">
+                    <then>
+                        <assign variable="palindrome" expression="false"/>
+                    </then>
+                    <else/>
+                </if>
+                <assign variable="index" expression="index + 1"/>
+            </while>
+            <if expression="palindrome = true">
+                <then>
+                    <output expression="&quot;palindrome&quot;" newline="True"/>
+                </then>
+                <else>
+                    <output expression="&quot;bukan palindrome&quot;" newline="True"/>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>

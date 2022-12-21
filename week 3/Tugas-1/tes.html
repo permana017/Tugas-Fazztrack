@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <form>
+            <input oninput="onSearch(this)"></input>
+            <input  type="number" id="total-item"></input>
+            <div id="item"></div>
+
+        </form>
+        <script>
+            let data = [
+                "Abigail",
+                "Alexandra",
+                "Alison",
+                "Amanda",
+                "Angela",
+                "Bella",
+                "Carol",
+                "Caroline",
+                "Carolyn",
+                "Deirdre",
+                "Diana",
+                "Elizabeth",
+                "Ella",
+                "Faith",
+                "Olivia",
+                "Penelope"
+            ]
+
+            function onSearch(e) {
+                let value = e.value
+                filterItem(data, value, displayItem);
+            }
+
+            function displayItem(items) {
+                    document
+                        .getElementById("item")
+                        .innerHTML = `<div>${items
+                        .toString()
+                        .replaceAll(',', '')}</div>`;
+            }
+
+            function filterItem(data, value, myCallback) {
+                let dataFilter = []
+                let total = document.getElementById("total-item").value;
+                let total_data = 0
+
+
+
+                if (value.length >= 2) {
+                    data.map((item, i) => {
+                        if (item.toLowerCase().includes(value) ) {
+                                total_data ++
+                                if(total_data <= total){
+                                    dataFilter.push(`<div>${item}</div>`)
+                                }
+                        }
+                    })
+
+                    myCallback(dataFilter);
+
+                } else {
+                    console.log('kurang datana')
+                    document
+                        .getElementById("item")
+                        .innerHTML = '';
+                }
+
+            }
+
+
+            
+        </script>
+    </body>
+</html>
