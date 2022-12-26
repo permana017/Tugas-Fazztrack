@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+      
+            <input type="text" placeholder="input data" id="input-data">
+            <div>
+                <div>data :</div>
+                <div id="hasil"></div>
+            </div>
+            <button onclick="addItem()">Submit</button>
+   
+
+
+
+        <script>
+            function addItem(){
+                let data = document.getElementById("input-data").value
+                console.log(data)
+                const sendData = document.createElement("div");
+                sendData.innerHTML = `<div onclick="deleteData(${data})" id="${data}">${data}</div>`;
+                document.getElementById("hasil").appendChild(sendData);
+                document.getElementById("input-data").value = ''
+            }
+
+            function deleteData(e){
+                console.log('delete',e)
+            }
+        </script>
+    </body>
+</html>

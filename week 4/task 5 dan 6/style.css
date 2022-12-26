@@ -1,0 +1,59 @@
+.container{
+    width: 100%;
+    justify-content: center;
+    position: relative;
+}
+.card{
+    display: flex;
+    flex-wrap: wrap;
+}
+.card-name{
+    width: 18%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px;
+}
+
+.navbar-inner{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+.navbar h3{
+    font-size: 24px;
+}
+.navbar-inner .icon-menu{
+    display: flex;
+    align-items: center;
+    width: 60px;
+    font-size: 25px;
+}
+.icon-close{
+    width: 60px;
+    font-size: 25px;
+}
+.display-2{
+    display: none;
+    font-size: 25px;
+}
+.menu{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    background: #fff;
+    z-index: 2;
+    height: 100vh;
+}
+ul{
+    list-style-type: none;
+}
+.menu-nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+
+}
