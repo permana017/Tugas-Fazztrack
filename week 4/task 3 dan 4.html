@@ -14,6 +14,7 @@
                 <div id="hasil"></div>
             </div>
             <button onclick="addItem()">Submit</button>
+            <!-- <button onclick="deleteData()">Remove</button> -->
    
 
 
@@ -21,15 +22,19 @@
         <script>
             function addItem(){
                 let data = document.getElementById("input-data").value
-                console.log(data)
                 const sendData = document.createElement("div");
-                sendData.innerHTML = `<div onclick="deleteData(${data})" id="${data}">${data}</div>`;
+                sendData.innerHTML = `<div id=data-${data}>
+                    <p>${data}</p>
+                    <button onclick="deleteData('${data}')">X</button>
+                    </div>`;
                 document.getElementById("hasil").appendChild(sendData);
                 document.getElementById("input-data").value = ''
             }
 
-            function deleteData(e){
-                console.log('delete',e)
+            function deleteData(value){
+                console.log(value)
+                const element = document.getElementById(`data-${value}`)
+                element.remove();
             }
         </script>
     </body>
