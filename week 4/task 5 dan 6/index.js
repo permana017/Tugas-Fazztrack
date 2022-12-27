@@ -52,7 +52,7 @@ getUser = async () => {
                     <p>Name : ${item.name}</p>
                     <p>Username : ${item.username}</p>
                     <p>E-mail : ${item.email}</p>
-                    <p>Address : ${item.address.street}</p>
+                    <p>Address : ${item.address.city}</p>
                 </div>
             `
                 dataArr.push(dataUser)

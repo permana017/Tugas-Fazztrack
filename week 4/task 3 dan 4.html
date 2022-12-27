@@ -5,16 +5,20 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
+        <style>
+            .hasil{
+                display: flex;
+            }
+        </style>
     </head>
     <body>
       
             <input type="text" placeholder="input data" id="input-data">
             <div>
                 <div>data :</div>
-                <div id="hasil"></div>
+                <div id="hasil" class="hasil"></div>
             </div>
             <button onclick="addItem()">Submit</button>
-            <!-- <button onclick="deleteData()">Remove</button> -->
    
 
 
@@ -23,12 +27,17 @@
             function addItem(){
                 let data = document.getElementById("input-data").value
                 const sendData = document.createElement("div");
-                sendData.innerHTML = `<div id=data-${data}>
+                if (data == "") {
+                  alert("data tidak boleh kosong")
+                } else {
+                    sendData.innerHTML = `<div id=data-${data}>
                     <p>${data}</p>
                     <button onclick="deleteData('${data}')">X</button>
                     </div>`;
-                document.getElementById("hasil").appendChild(sendData);
-                document.getElementById("input-data").value = ''
+                    document.getElementById("hasil").appendChild(sendData);
+                    document.getElementById("input-data").value = ''
+                }
+
             }
 
             function deleteData(value){

@@ -1,0 +1,144 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./style.css">
+        <title>Get API</title>
+    </head>
+    <body>
+        <section class="container">
+            <form action="" class="form">
+                <div class="form-inner">
+                    <label for="name" id="name">Name :</label>
+                    <input type="text">
+                </div>
+                <div class="form-inner">
+                    <label for="username" id="username">Username :</label>
+                    <input type="text">
+                </div>
+                <div class="form-inner">
+                    <label for="email" id="email">E-Mail :</label>
+                    <input type="email">
+                </div>
+                <div class="form-inner">
+                    <label for="address" id="address">Address :</label>
+                    <input type="text">
+                </div>
+                <button  onclick="addCard()">submit</button>
+            </form>
+        </section>
+        <section class="container-card">
+            <div class="card" id="card">
+                <!-- <div class="card-inner">
+                    <p>name :</p>
+                    <p class="hasil-name">ahdi permana</p>
+                </div>
+                <div class="card-inner">
+                    <p>Username :</p>
+                    <p class="hasil-Username"> permana</p>
+                </div>
+                <div class="card-inner">
+                    <p>E-Mail :</p>
+                    <p class="hasil-email"></p>
+                </div>
+                <div class="card-inner">
+                    <p>address :</p>
+                    <p class="hasil-email"></p>
+                </div> -->
+            </div>
+
+
+            <script>            
+            getUser = async () => {
+                try {
+                    let data = await fetch('https://63aaeb1dfdc006ba604fddf4.mockapi.io/user')
+                    let dataJason = await data.json()
+                    let dataArr = []
+                    dataJason.map((item) => {
+                        console.log(item.id)
+                        let dataUser = ''
+                        dataUser = `
+                            <div class="card-name" id="${item.id}">
+                                <p>ID : ${item.id}</p>
+                                <p>Name : ${item.name}</p>
+                                <p>Username : ${item.username}</p>
+                                <p>E-mail : ${item.email}</p>
+                                <p>Address : ${item.address}</p>
+                                <button id="deleted" onclick="deletedCard('${item.id}')">delete</button>
+                            </div>
+                        `
+                            dataArr.push(dataUser)
+            
+                    })
+                    document.getElementById("card").innerHTML = dataArr.join('')
+                } catch (error) {
+                    console.log(error.message)
+                }
+            }
+            getUser() 
+            
+            function deletedCard(id){
+                // document.querySelector('.card-name').value
+                console.log(id)
+                fetch(`https://63aaeb1dfdc006ba604fddf4.mockapi.io/user/${id}`,{
+                method: 'delete',
+                    })
+                    .then(res => {
+                        if (!res.ok) return Promise.reject(new Error(`HTTP Error ${res.status}`));
+
+                        return res.json();
+                    })
+                    .then(data => {
+                        // alert("data berhasil dihapus")
+                        window.location.reload()
+                    })
+                    .catch(err => console.error(err));
+            }
+
+
+            function addCard(){
+                // document.querySelector('.card-name').value
+                console.log('proses add')
+                let name = document.getElementById("name").value 
+                let userName = document.getElementById("username").value 
+                let email = document.getElementById("email").value 
+                let address = document.getElementById("address").value  
+                let data = {
+                    "name": name,
+                    "email": email,
+                    "username":userName,
+                    "address": address,
+                }
+ 
+                
+                fetch(`https://63aaeb1dfdc006ba604fddf4.mockapi.io/user`,{
+                        method: 'post',
+                        body:JSON.stringify(data),
+                        headers: {
+                            'Content-type': 'application/json; charset=UTF-8',
+                        },
+                    })
+                    .then(res => {
+                        if (!res.ok) return Promise.reject(new Error(`HTTP Error ${res.status}`));
+
+                        return res.json();
+                    })
+                    .then(data => {
+                        // alert("data berhasil dihapus")
+                        window.location.reload()
+                    })
+                    .catch(err => console.error(err));
+            }
+            </script>
+
+
+
+        </section>
+    </body>
+</html>
+
