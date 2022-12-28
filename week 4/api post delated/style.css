@@ -5,6 +5,7 @@
     display: flex;
     justify-content: center;
 }
+
 .container .form{
     padding: 40px 60px;
     background-color: red;
@@ -20,7 +21,6 @@
 .container .form-inner input{
     padding: 5px 10px;
     border-radius: 3px;
-    border: green;
 
 }
 .container-card{
