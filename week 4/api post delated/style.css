@@ -1,5 +1,4 @@
 
-
 .container{
     width: 100%;
     display: flex;
@@ -8,7 +7,8 @@
 
 .container .form{
     padding: 40px 60px;
-    background-color: red;
+    background-color: rgb(37, 230, 230);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 15px;
     margin-bottom: 60px;
 }
