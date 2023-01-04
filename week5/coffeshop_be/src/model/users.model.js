@@ -3,13 +3,13 @@ const { v4: uuidv4 } = require('uuid');
 
 
 const userModel = {
-    query: (queryParams, sortType = 'asc', limit = 10) => {
+    query: (queryParams, sortType = 'asc', limit = 10, offset=0) => {
         if (queryParams.name && queryParams.address) {
-            return `WHERE name LIKE '%${queryParams.name}%' AND address LIKE '%${queryParams.address}%' ORDER BY name ${sortType} LIMIT ${limit}`;
+            return `WHERE name LIKE '%${queryParams.name}%' AND address LIKE '%${queryParams.address}%' ORDER BY name ${sortType} LIMIT ${limit} OFFSET ${offset}`;
         } else if (queryParams.name || queryParams.address) {
-            return `WHERE name LIKE '%${queryParams.name}%' OR address LIKE '%${queryParams.address}%' ORDER BY name ${sortType} LIMIT ${limit}`;
+            return `WHERE name LIKE '%${queryParams.name}%' OR address LIKE '%${queryParams.address}%' ORDER BY name ${sortType} LIMIT ${limit} OFFSET ${offset}`;
         } else {
-            return `ORDER BY name ${sortType} LIMIT ${limit}`;
+            return `ORDER BY name ${sortType} LIMIT ${limit} OFFSET ${offset}`;
         }
 
     },
@@ -79,7 +79,7 @@ const userModel = {
                 
             })
     },
-    remove:({id})=>{
+    remove:(id)=>{
         return new Promise((resolve, reject) => {
             db.query(
                 `DELETE from users WHERE id='${id}'`,

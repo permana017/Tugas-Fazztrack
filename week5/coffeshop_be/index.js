@@ -1,16 +1,37 @@
 require('dotenv').config();
 
-const {urlencoded} = require('express')
+const {urlencoded, json} = require('express')
 const express = require('express')
 const app = express()
 const router = require('./src/view/index')
 const cors = require('cors')
+const { v4: uuidv4 } = require('uuid');
+const db = require("./helper/connection")
+
 
 
 app.use(urlencoded({extended: true}))
 app.use('/api/v1', router)
 
 app.use(cors());
+
+app.use(json())
+
+
+// app.get("/product", (req, res) => {
+//   db.query(
+//     `SELECT * from pruducts`,
+//     (err, result) => {
+//       if (err) {
+//         return res.status(500).send({ message: err.message });
+//       } else {
+//         return res.status(200).send({ message: "succes", data: result.rows });
+//       }
+//     }
+//   );
+// });
+
+
 
 
 // app.get("/users", (req, res) => {
@@ -39,23 +60,23 @@ app.use(cors());
 // );
 // });
 
-// app.post("/users", (req, res) => {
-//     const {name, email, address, username} = req.body;
-//     db.query(
-//         `INSERT INTO users (id, email, address, name, username) VALUEs ('${uuidv4()}','${email}','${address}','${name}','${username}')`,
-//         (err, result) => {
-//             if (err) {
-//                 return res
-//                     .status(500)
-//                     .send({message: err.message});
-//             } else {
-//                 return res
-//                     .status(201)
-//                     .send({message: "succes", data: req.body});
-//             }
-//         }
-//     );
-// });
+app.post("/products", (req, res) => {
+    const {tittle, img, category, price} = req.body;
+    db.query(
+        `INSERT INTO products (id, tittle, img, category, price) VALUES ('${uuidv4()}','${tittle}','${price}','${img}','${category}')`,
+        (err, result) => {
+            if (err) {
+                return res
+                    .status(500)
+                    .send({message: err.message});
+            } else {
+                return res
+                    .status(201)
+                    .json({message: "succes", data: req.body});
+            }
+        }
+    );
+});
 // app.put("/users", (req, res) => {
 //     res
 //         .status(200)

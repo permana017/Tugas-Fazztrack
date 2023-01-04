@@ -40,7 +40,7 @@ const userController = {
         })
     },
     remove:(req, res)=> {
-        return userModel.remove(request)
+        return userModel.remove(req.params.id)
         .then((result)=> {
             return res.status(201).send({ message: "succes", data: result })
         }).catch((error)=> {
