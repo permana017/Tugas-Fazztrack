@@ -18,7 +18,7 @@ app.use(cors());
 app.use(json())
 
 
-// app.get("/product", (req, res) => {
+// app.get("/products", (req, res) => {
 //   db.query(
 //     `SELECT * from pruducts`,
 //     (err, result) => {
@@ -31,8 +31,24 @@ app.use(json())
 //   );
 // });
 
-
-
+// app.post("/products", (req, res) => {
+//     const {tittle, img, category, price} = req.body;
+//     console.log(req.body)
+//     db.query(
+//         `INSERT INTO products (id, tittle, img, category, price) VALUES ('${uuidv4()}','${tittle}','${price}','${img}','${category}')`,
+//         (err, result) => {
+//             if (err) {
+//                 return res
+//                     .status(500)
+//                     .send({message: err.message});
+//             } else {
+//                 return res
+//                     .status(201)
+//                     .json({message: "succes", data: req.body});
+//             }
+//         }
+//     );
+// });
 
 // app.get("/users", (req, res) => {
 //   db.query(
@@ -60,23 +76,6 @@ app.use(json())
 // );
 // });
 
-app.post("/products", (req, res) => {
-    const {tittle, img, category, price} = req.body;
-    db.query(
-        `INSERT INTO products (id, tittle, img, category, price) VALUES ('${uuidv4()}','${tittle}','${price}','${img}','${category}')`,
-        (err, result) => {
-            if (err) {
-                return res
-                    .status(500)
-                    .send({message: err.message});
-            } else {
-                return res
-                    .status(201)
-                    .json({message: "succes", data: req.body});
-            }
-        }
-    );
-});
 // app.put("/users", (req, res) => {
 //     res
 //         .status(200)
@@ -122,7 +121,7 @@ app.get("*", (req, res) => {
 });
 
 
-const port = 3000
+const port = 5000
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
